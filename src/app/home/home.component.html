@@ -1,0 +1,55 @@
+
+<div class="row pb-4 w-50 mx-auto">
+  <div class='col-md-3 mt-1'>
+   <h5 class="h5 mb-3">Search</h5>
+  </div>
+  <div class="col-md-9 ">
+    <input type="text" class="form-control" [(ngModel)]="searchItem">
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 d-flex  align-items-center">
+        <div>
+            <div class="brdr w-25 mb-2"></div> 
+            <h2 class="h4">Trending <br> movies <br> to watch now</h2> 
+            <p class="brdr_color py-2">must watched movies by days</p>
+            <div class="brdr w-75"></div>
+        </div>
+    </div>
+
+  <div class="col-md-2 mb-2" *ngFor="let data of trendingMovies|search:searchItem">
+    <app-media-item [item]="data"></app-media-item>
+  </div>
+
+</div>
+<div class="row py-5">
+    <div class="col-md-4 d-flex  align-items-center">
+        <div>
+            <div class="brdr w-25 mb-2"></div> 
+            <h2 class="h4">Trending <br> TV <br> to watch now</h2> 
+            <p class="brdr_color py-2">must watched movies by days</p>
+            <div class="brdr w-75"></div>
+        </div>
+    </div>
+
+  <div class="col-md-2 mb-2" *ngFor="let data of trendingTV|searchbyname:searchItem">
+    <app-media-item [item]="data"></app-media-item>
+  </div>
+
+</div>
+<div class="row">
+    <div class="col-md-4 d-flex  align-items-center">
+        <div>
+            <div class="brdr w-25 mb-2"></div> 
+            <h2 class="h4">Trending <br> People <br> to watch now</h2> 
+            <p class="brdr_color py-2">must watched movies by days</p>
+            <div class="brdr w-75"></div>
+        </div>
+    </div>
+
+  <div class="col-md-2 mb-2" *ngFor="let data of trendingPeople|searchbyname:searchItem">
+    <app-media-item [item]="data"></app-media-item>
+  </div>
+hom
+</div>
