@@ -1,55 +1,28 @@
 
-<div class="row pb-4 w-50 mx-auto">
-  <div class='col-md-3 mt-1'>
-   <h5 class="h5 mb-3">Search</h5>
-  </div>
-  <div class="col-md-9 ">
-    <input type="text" class="form-control" [(ngModel)]="searchItem">
-  </div>
-</div>
-
 <div class="row">
-    <div class="col-md-4 d-flex  align-items-center">
-        <div>
-            <div class="brdr w-25 mb-2"></div> 
-            <h2 class="h4">Trending <br> movies <br> to watch now</h2> 
-            <p class="brdr_color py-2">must watched movies by days</p>
-            <div class="brdr w-75"></div>
-        </div>
-    </div>
 
-  <div class="col-md-2 mb-2" *ngFor="let data of trendingMovies|search:searchItem">
-    <app-media-item [item]="data"></app-media-item>
+  <div class="col-md-2  px-2 py-4" *ngFor="let product of products ">
+
+          <div class="product" >
+              <a [routerLink]="['/productdetails' , product.id]">
+              <img src={{product.imageCover}} class="w-100" alt="">
+              <span class="text-main fw-bold font-sm p-1">{{product.category.name}}</span>
+              <h3 class="h6 fw-bolder p-1"> {{product.title.split(' ').slice(0,2).join(' ')}}</h3>
+           <div class="d-flex  p-2 align-item-center justify-content-between">
+              <span class="text-muted fw-bold font-sm">{{product.price}} </span>
+              <div>
+              <i class="fas fa-star rating-color mx-1"></i>
+              <span class="text-muted font-sm">{{product.ratingsAverage}}</span>
+              </div>
+
+           </div>
+
+          </a>
+          <button (click)="addToCart(product.id)" class="btn bg-main text-white w-75 d-block mx-auto"> Add +</button>
+          </div>
+
+
+
   </div>
 
-</div>
-<div class="row py-5">
-    <div class="col-md-4 d-flex  align-items-center">
-        <div>
-            <div class="brdr w-25 mb-2"></div> 
-            <h2 class="h4">Trending <br> TV <br> to watch now</h2> 
-            <p class="brdr_color py-2">must watched movies by days</p>
-            <div class="brdr w-75"></div>
-        </div>
-    </div>
-
-  <div class="col-md-2 mb-2" *ngFor="let data of trendingTV|searchbyname:searchItem">
-    <app-media-item [item]="data"></app-media-item>
-  </div>
-
-</div>
-<div class="row">
-    <div class="col-md-4 d-flex  align-items-center">
-        <div>
-            <div class="brdr w-25 mb-2"></div> 
-            <h2 class="h4">Trending <br> People <br> to watch now</h2> 
-            <p class="brdr_color py-2">must watched movies by days</p>
-            <div class="brdr w-75"></div>
-        </div>
-    </div>
-
-  <div class="col-md-2 mb-2" *ngFor="let data of trendingPeople|searchbyname:searchItem">
-    <app-media-item [item]="data"></app-media-item>
-  </div>
-hom
 </div>

@@ -11,44 +11,48 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  constructor(private _AuthService:AuthService , private _Router:Router) {
+    if(localStorage.getItem('userToken') !== null){
+      this._Router.navigate(['/home'])
+    }
+{
 
+}   }
 
+  ngOnInit(): void {
+  }
   isLoading:boolean=false;
-  loginForm:FormGroup = new FormGroup ({
-    email:new FormControl (null, [Validators.email, Validators.required]),
-   password:new FormControl (null, [Validators.pattern(/^[A-Z]/)])
+  apiError:string='';
+  loginForm:FormGroup=new FormGroup({
+    email:new FormControl(null,[Validators.required,Validators.email]),
+    password:new FormControl(null,[Validators.required,Validators.pattern(/^[A-Z][a-z0-9]{5,10}/)]),
   })
 
-  constructor(private _authService:AuthService , private _router:Router) { }
-error:string='';
 
-  submitLoginForm(loginForm:FormGroup){
-  this.isLoading= true;
-    console.log('hi');
+  HandelLogin(registerForm:FormGroup){
 
-    this._authService.signIn(loginForm.value).subscribe({
 
-      next:(response) => {
-        this.isLoading= false;
-        if (response.message === 'success') {
-          localStorage.setItem('userToken', response.token);
-          this._authService.saveUserData();
-          console.log('success');
-          this._router.navigate(['/home']);
-        }else {
-           this.error=response.message;}  
-}})}
-  ngOnInit(): void {
-    this._authService.userData.subscribe({
-      next:()=> {
-        if (this._authService.userData.getValue() != null ) {
-       this._router.navigate(['/home'])
-        }
-      
-      }}
-     )
+    this.isLoading=true
+    if (registerForm.valid){
+  this._AuthService.signIn(registerForm.value).subscribe({
+    next:(response)=>{
+      if (response.message === 'success'){
+        localStorage.setItem('userToken', response.token)
+        this._AuthService.saveData();
+      console.log(response.token);
+        this.isLoading=false;
+        this._Router.navigate(['/home']);
+
+
+
+      }},
+      error:(err)=>{
+         this.isLoading=false;
+         this.apiError=err.message
+      }}) }
+
+
+
   }
 
 }
-
-

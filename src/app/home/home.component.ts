@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies.service';
+
+import { ProductsService } from '../products.service';
+import { CartService } from '../carts.service';
+
+
+
+
 
 
 @Component({
@@ -9,27 +15,32 @@ import { MoviesService } from '../movies.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private _moviesServiec:MoviesService) { }
-  searchItem:string='';
-trendingMovies:any []=[];
-trendingTV:any []=[];
-trendingPeople:any []=[];
+  constructor(private _ProductsService:ProductsService, private _CartService:CartService) { }
+
+addToCart(productId:string){
+  return this._CartService.addToCart(productId).subscribe({
+    next:(response:any)=>{
+      this._CartService.numberOfCartItem.next(response.numOfCartItems)
+console.log(response)}
+ ,
+    error:(err:any)=>{
+console.log(err);
+
+    }
+  })
+
+}
+
+
+products:any []=[];
   ngOnInit(): void {
-    this._moviesServiec.getTrending('movie').subscribe({
-      next:(data) =>{
-        this.trendingMovies= data.results.slice(0,10)
-      }})
+ this._ProductsService.allProducts().subscribe({
+  next:(response)=>{
+  this.products=response.data
+  console.log(response.data);
 
-    this._moviesServiec.getTrending('tv').subscribe({
-      next:(data) =>{
-        this.trendingTV= data.results.slice(0,10)
-      }})
-    this._moviesServiec.getTrending('person').subscribe({
-      next:(data) =>{
-        this.trendingPeople= data.results.filter((item:any)=> item.profile_path !== null).slice(0,10)
-      }
-    })
-
+  }
+ })
   }
 
 }

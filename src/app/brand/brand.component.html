@@ -1,0 +1,17 @@
+<div class="py-4 my-4 bg-main-light shadow">
+  <h2 class="text-main text-center fw-bolder">All Brands</h2>
+  <div class="py-3 p-3" *ngFor="let brand of brandsDetails">
+          <a class="row align-items-center " [routerLink]="['/branddetails', brand._id]">
+              <div class="col-md-3">
+                  <img  class="w-100" [src]="brand.image" alt="">
+              </div>
+              <div class="col-md-8 ps-5 ">
+                          <h3 class=" text-main"> Name: {{brand.name}}</h3>
+                          <h3 class=" text-main"> Slug: {{brand.slug}}</h3>
+                  </div>
+          </a>
+
+
+
+
+</div>
