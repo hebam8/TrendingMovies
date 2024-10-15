@@ -17,16 +17,16 @@ trendingPeople:any []=[];
   ngOnInit(): void {
     this._moviesServiec.getTrending('movie').subscribe({
       next:(data) =>{
-        this.trendingMovies= data.results.slice(0,10)
+        this.trendingMovies= data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
       }})
 
     this._moviesServiec.getTrending('tv').subscribe({
       next:(data) =>{
-        this.trendingTV= data.results.slice(0,10)
+        this.trendingTV= data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
       }})
     this._moviesServiec.getTrending('person').subscribe({
       next:(data) =>{
-        this.trendingPeople= data.results.filter((item:any)=> item.profile_path !== null).slice(0,10)
+        this.trendingPeople=data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
       }
     })
 

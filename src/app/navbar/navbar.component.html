@@ -44,18 +44,10 @@
           <li class="nav-item">
             <a  *ngIf="!isLogin" class="nav-link text-light" routerLink="register">Register</a>
           </li>
-        
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-light" routerLink="settings" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Settings
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="settings/password">Pssword</a></li>
-              <li><a class="dropdown-item" routerLink="settings/privacy">Privacy</a></li>
-            </ul>
-
+          <li class="nav-item">
+            <a  *ngIf="isLogin" class="nav-link text-light" routerLink="settings"> Settings</a>
           </li>
+        
           <li class="nav-item">
             <a (click)="logOut()" *ngIf="isLogin" class="nav-link text-light" >LogOut</a>
           </li>

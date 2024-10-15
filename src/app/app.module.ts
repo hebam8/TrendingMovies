@@ -45,8 +45,8 @@ import { SearchbynamePipe } from './searchbyname.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule
-    
-    
+
+
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

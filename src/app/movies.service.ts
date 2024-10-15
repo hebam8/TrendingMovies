@@ -19,4 +19,6 @@ export class MoviesService {
   getItemDetails(id:string, mediaType:string):Observable<any>{
     return this._httpClient.get(`https://api.themoviedb.org/3/${mediaType}/${id}?api_key`)
   }
+
+  
 }
