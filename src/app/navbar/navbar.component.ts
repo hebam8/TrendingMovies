@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { CartService } from '../carts.service';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,37 +8,27 @@ import { CartService } from '../carts.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-isLogin:boolean=false;
-cartNumber:number=0;
-  constructor(private _AuthService:AuthService, private _CartService:CartService) {
-    this._CartService.numberOfCartItem.subscribe({
-      next:(value)=>this.cartNumber=value
-    })
+isLoading:boolean=false
+  constructor(private _AuthService:AuthService ) { }
+
+  ngOnInit(): void {
 
     this._AuthService.userData.subscribe({
       next:()=>{
-        if (this._AuthService.userData.getValue()  != null)
-      {
-        this.isLogin=true;
-      }else{
-        this.isLogin=false;
+        if (this._AuthService.userData.getValue() != null){
+
+          this.isLoading=true
+        }
+        else
+        {
+          this.isLoading=false
+        }
       }
-
-
-      }
-          })
-
-
-
-
-
+    })
 
   }
 
-   logOut(){
-    this._AuthService.logOut();
-   }
-  ngOnInit(): void {
 
-
-}}
+  logOut(){
+    this._AuthService.signout();
+  }}

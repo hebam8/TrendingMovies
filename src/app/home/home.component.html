@@ -1,77 +1,78 @@
-
-<div class="row">
-<<<<<<< HEAD
-    <div class="col-md-4 d-flex  align-items-center">
-        <div>
-            <div class="brdr w-25 mb-2"></div>
-            <h2 class="h4">Trending <br> movies <br> to watch now</h2>
-            <p class="brdr_color py-2">must watched movies by days</p>
-            <div class="brdr w-75"></div>
-        </div>
+<div class="row ">
+  <div class="col-md-4 d-flex align-items-center">
+    <div>
+      <div class="brdr w-25"></div>
+      <h2 class="h5 py-3">Trending <br> movies <br> To Watch Right Now</h2>
+      <p class="brdr_color ">must watched movies by days</p>
+      <div class="brdr w-50"></div>
     </div>
-=======
->>>>>>> 13de899af42f532ff5ac1c96302f599c0a8a4777
+  </div>
+<div class="col-md-2 mb-2"  *ngFor="let item of trendingMovie" >
+  <div class="item position-relative">
+    <a [routerLink]="['/people',item.id,item.media_type]">
+    <img *ngIf="item.poster_path" class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
+    <img class="w-100"  *ngIf="item.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+item.profile_path" alt="">
 
-  <div class="col-md-2  px-2 py-4" *ngFor="let product of products ">
+    <h3 class="h6">{{item.title}} {{item.name}}</h3>
+    <div class="position-absolute end-0 top-0 bg-info p-1">{{item.vote_average.toFixed(1)}}</div>
+  </a>
+  </div>
 
-          <div class="product" >
-              <a [routerLink]="['/productdetails' , product.id]">
-              <img src={{product.imageCover}} class="w-100" alt="">
-              <span class="text-main fw-bold font-sm p-1">{{product.category.name}}</span>
-              <h3 class="h6 fw-bolder p-1"> {{product.title.split(' ').slice(0,2).join(' ')}}</h3>
-           <div class="d-flex  p-2 align-item-center justify-content-between">
-              <span class="text-muted fw-bold font-sm">{{product.price}} </span>
-              <div>
-              <i class="fas fa-star rating-color mx-1"></i>
-              <span class="text-muted font-sm">{{product.ratingsAverage}}</span>
-              </div>
+</div>
+</div>
 
-           </div>
 
-          </a>
-          <button (click)="addToCart(product.id)" class="btn bg-main text-white w-75 d-block mx-auto"> Add +</button>
-          </div>
-
+<div class="row py-2">
+  <div class="col-md-4 d-flex align-items-center">
+    <div>
+      <div class="brdr w-25"></div>
+      <h2 class="h5 py-3">Trending <br> TV <br> To Watch Right Now
+      </h2>
+      <p class="brdr_color py-2">must watched movies by days</p>
+      <div class="brdr w-50"></div>
+    </div>
 
 
   </div>
 
+  <div *ngFor="let item of trendingTv" class="col-md-2">
+<div  class="item">
+  <a [routerLink]="['/moviedetails',item.id,item.media_type]">
+<img class="w-100"  *ngIf="item.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
+<img class="w-100"  *ngIf="item.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+item.profile_path" alt="">
+
+<h3 class="h6">{{item.title}} {{item.name}}</h3>
+<div *ngIf="item.vote_average" class="position-absolute end-0 top-0 bg-info p-1">{{item.vote_average.toFixed(1)}}</div>
+</a>
 </div>
-<<<<<<< HEAD
 
+</div>
 
-
-
-
-<div class="row py-5">
-    <div class="col-md-4 d-flex  align-items-center">
-        <div>
-            <div class="brdr w-25 mb-2"></div>
-            <h2 class="h4">Trending <br> TV <br> to watch now</h2>
-            <p class="brdr_color py-2">must watched movies by days</p>
-            <div class="brdr w-75"></div>
-        </div>
+</div>
+<div class="row my-5">
+  <div class="col-md-4 d-flex align-items-center">
+    <div>
+      <div class="brdr w-25"></div>
+      <h2 class="h5 py-3">Trending <br> People<br> To Watch Right Now
+      </h2>
+      <p class="brdr_color py-2">must watched movies by days</p>
+      <div class="brdr w-50"></div>
     </div>
-
-  <div class="col-md-2 mb-2" *ngFor="let data of trendingTV|searchbyname:searchItem">
-    <app-media-item [item]="data"></app-media-item>
   </div>
 
-</div>
-<div class="row">
-    <div class="col-md-4 d-flex  align-items-center">
-        <div>
-            <div class="brdr w-25 mb-2"></div>
-            <h2 class="h4">Trending <br> People <br> to watch now</h2>
-            <p class="brdr_color py-2">must watched movies by days</p>
-            <div class="brdr w-75"></div>
-        </div>
-    </div>
+  <div *ngFor="let item of trendingPeople" class="col-md-2 ">
+<div  class="item">
+  <a  [routerLink]="['/moviedetails',item.id,item.media_type]">
+    <img *ngIf="item.poster_path" class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
+    <img class="w-100"  *ngIf="item.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+item.profile_path" alt="">
 
-  <div class="col-md-2 mb-2" *ngFor="let data of trendingPeople|searchbyname:searchItem">
-    <app-media-item [item]="data"></app-media-item>
-  </div>
+    <h3 class="h6">{{item.title}} {{item.name}}</h3>
+    <div *ngIf="item.vote_average"  >{{item.vote_average}}</div>
+  </a>
+
+
 
 </div>
-=======
->>>>>>> 13de899af42f532ff5ac1c96302f599c0a8a4777
+</div>
+
+</div>

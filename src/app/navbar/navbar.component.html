@@ -1,85 +1,47 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light ">
-  <div class="container">
-    <i class="fa-solid fa-store mx-1 text-main"></i>
-    <a class="navbar-brand  cursur-pointer" routerLink="home">FreshCart</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a  routerLink="home">
+      <h1 class="text-white fw-bolder  me-2">noxe</h1></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-
-            <li class="nav-item" *ngIf="isLogin">
-                <a class="nav-link" routerLink="home">Home</a>
-            </li>
-<<<<<<< HEAD
-     
-          <li class="nav-item">
-            <a  *ngIf="!isLogin" class="nav-link text-light" routerLink="login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a  *ngIf="!isLogin" class="nav-link text-light" routerLink="register">Register</a>
-          </li>
-          <li class="nav-item">
-            <a  *ngIf="isLogin" class="nav-link text-light" routerLink="settings"> Settings</a>
-          </li>
-        
-          <li class="nav-item">
-            <a (click)="logOut()" *ngIf="isLogin" class="nav-link text-light" >LogOut</a>
-          </li>
-       
-         
-=======
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a *ngIf="isLoading" class="nav-link active text-white" routerLink="home" >Home</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="isLoading" class="nav-link active text-white" routerLink="about">About</a>
+        </li>
+        <li class="nav-item">
+          <a  *ngIf="isLoading"class="nav-link active text-white" routerLink="tv">TV</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="isLoading" class="nav-link active text-white" routerLink="movies" >Movies</a>
+        </li>
 
 
-
-            <li class="nav-item" *ngIf="isLogin">
-                <a class="nav-link" routerLink="products">Products</a>
-            </li>
-
-            <li class="nav-item" *ngIf="isLogin">
-                <a class="nav-link" routerLink="categories">Categories</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="isLogin" routerLink="brand">Brands</a>
-            </li>
-
->>>>>>> 13de899af42f532ff5ac1c96302f599c0a8a4777
-        </ul>
-        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-            <li class="nav-item d-flex align-items-center">
-          <i class="fab fa-instagram mx-1"> </i>
-          <i class="fab fa-facebook mx-1"> </i>
-          <i class="fab fa-twitter mx-1"> </i>
-          <i class="fab fa-tiktok mx-1"> </i>
-          <i class="fab fa-linkedin mx-1"> </i>
-          <i class="fab fa-youtube mx-1"> </i>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="login" *ngIf="!isLogin">Login</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" routerLink="register" *ngIf="!isLogin">Register</a>
-            </li>
-            <li class="nav-item" *ngIf="isLogin">
-                <a class="nav-link position-relative" routerLink="cart" >
-
-            <i class="fas fa-cart-shopping text-main fa-lg p-2"></i>
-            <span class="badge ng-main text-white position-absolute top-0 end-0 bg-main">{{cartNumber}}</span>
-
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <span (click)="logOut()" class="nav-link cursur-pointer"  *ngIf="isLogin">LogOut</span>
-            </li>
+      </ul></div>
 
 
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+        <li class="d-flex me-3 align-items-center">
+          <i class="fa-brands me-2 fa-facebook"></i>
+          <i class="fa-brands  me-2 fa-twitter"></i>
+          <i class="fa-brands  me-2 fa-instagram"></i>
+          <i class="fa-brands   me-2 fa-spotify"></i>
+          <i class="fa-brands   me-2 fa-youtube"></i>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!isLoading" class="nav-link active text-white" routerLink="login" >Login</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!isLoading" class="nav-link active text-white" routerLink="register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a  *ngIf="isLoading" class="nav-link active text-white" (click)="logOut()">Log out</a>
+        </li>
 
-        </ul>
+      </ul></div>
 
-    </div>
-</div>
 </nav>

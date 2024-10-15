@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ProductsService } from '../products.service';
-import { CartService } from '../carts.service';
-
-
-
-
-
+import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-home',
@@ -15,49 +8,32 @@ import { CartService } from '../carts.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _ProductsService:ProductsService, private _CartService:CartService) { }
-
-addToCart(productId:string){
-  return this._CartService.addToCart(productId).subscribe({
-    next:(response:any)=>{
-      this._CartService.numberOfCartItem.next(response.numOfCartItems)
-console.log(response)}
- ,
-    error:(err:any)=>{
-console.log(err);
-
-    }
-  })
-
-}
-
-
-products:any []=[];
+  constructor(private _MoviesService:MoviesService) { }
+trendingMovie:any[]=[];
+trendingTv:any[]=[];
+trendingPeople:any[]=[]
   ngOnInit(): void {
-<<<<<<< HEAD
-    this._moviesServiec.getTrending('movie').subscribe({
-      next:(data) =>{
-        this.trendingMovies= data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
-      }})
+this._MoviesService.getMovieTrending('movie').subscribe({
+  next:(data)=>{
+     this.trendingMovie=data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
+  }
+})
 
-    this._moviesServiec.getTrending('tv').subscribe({
-      next:(data) =>{
-        this.trendingTV= data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
-      }})
-    this._moviesServiec.getTrending('person').subscribe({
-      next:(data) =>{
-        this.trendingPeople=data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
-      }
-    })
-=======
- this._ProductsService.allProducts().subscribe({
-  next:(response)=>{
-  this.products=response.data
-  console.log(response.data);
->>>>>>> 13de899af42f532ff5ac1c96302f599c0a8a4777
+this._MoviesService.getMovieTrending('tv').subscribe({
+  next:(data)=>{
+     this.trendingTv=data.results.filter((data:any)=>data.profile_path !== null).slice(0,10)
+  }
+})
+
+this._MoviesService.getMovieTrending('person').subscribe({
+  next:(data)=>{
+     this.trendingPeople=data.results.filter((data:any)=>data.profile_path !==null).slice(0,10)
+  }
+})
 
   }
- })
-  }
+
+
+
 
 }

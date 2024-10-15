@@ -12,15 +12,13 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { ApikeyInterceptor } from './apikey.interceptor';
+// import { ApikeyInterceptor } from './apikey.interceptor';
 import { SearchbynamePipe } from './searchbyname.pipe';
-import { CartComponent } from './cart/cart.component';
-import {  BrandsComponent } from './brand/brand.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { CategoriesdetailsComponent } from './categoriesdetails/categoriesdetails.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { ProductsComponent } from './prouduct/prouduct.component';
-import { ProductdetailsComponent } from './prouductdetailes/prouductdetailes.component';
+import { TvComponent } from './tv/tv.component';
+// import { PeopleComponent } from './people/people.component';
+
+// import { MovComponent } from './mov/mov.component';
+
 
 @NgModule({
   declarations: [
@@ -29,22 +27,14 @@ import { ProductdetailsComponent } from './prouductdetailes/prouductdetailes.com
     FooterComponent,
     HomeComponent,
     LoginComponent,
-
     NavbarComponent,
     NotfoundComponent,
-
     RegisterComponent,
-
-
-
     SearchbynamePipe,
-    CartComponent,
-    BrandsComponent,
-    CategoriesComponent,
-    CategoriesdetailsComponent,
-    CheckoutComponent,
-    ProductsComponent,
-    ProductdetailsComponent
+          TvComponent,
+          // PeopleComponent
+
+          // MovComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,11 +45,11 @@ import { ProductdetailsComponent } from './prouductdetailes/prouductdetailes.com
 
 
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:ApikeyInterceptor,
-    multi:true
-  }],
+  // providers: [{
+  //   // provide:HTTP_INTERCEPTORS,
+  //   // useClass:ApikeyInterceptor,
+  //   // multi:true
+  // }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
