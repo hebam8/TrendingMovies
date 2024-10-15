@@ -9,6 +9,7 @@ import { MoviesService } from '../movies.service';
 export class HomeComponent implements OnInit {
 
   constructor(private _MoviesService:MoviesService) { }
+  term:string='';
 trendingMovie:any[]=[];
 trendingTv:any[]=[];
 trendingPeople:any[]=[]

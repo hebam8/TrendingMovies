@@ -1,4 +1,11 @@
+<div class="p-4 ms-auto">
+
+  <input type="text" class="form-control" [(ngModel)]="term" id="search" placeholder="search by name">
+</div>
+
 <div class="row ">
+
+
   <div class="col-md-4 d-flex align-items-center">
     <div>
       <div class="brdr w-25"></div>
@@ -7,7 +14,7 @@
       <div class="brdr w-50"></div>
     </div>
   </div>
-<div class="col-md-2 mb-2"  *ngFor="let item of trendingMovie" >
+<div  *ngFor="let item of trendingMovie|searchbyname:term "  class="col-md-2 mb-2 " >
   <div class="item position-relative">
     <a [routerLink]="['/people',item.id,item.media_type]">
     <img *ngIf="item.poster_path" class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
@@ -35,9 +42,9 @@
 
   </div>
 
-  <div *ngFor="let item of trendingTv" class="col-md-2">
-<div  class="item">
-  <a [routerLink]="['/moviedetails',item.id,item.media_type]">
+  <div *ngFor="let item of trendingTv " class="col-md-2">
+<div  class="item position-relative">
+  <a [routerLink]="['/people',item.id,item.media_type]">
 <img class="w-100"  *ngIf="item.poster_path" [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
 <img class="w-100"  *ngIf="item.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+item.profile_path" alt="">
 
@@ -49,6 +56,8 @@
 </div>
 
 </div>
+
+
 <div class="row my-5">
   <div class="col-md-4 d-flex align-items-center">
     <div>
@@ -61,8 +70,8 @@
   </div>
 
   <div *ngFor="let item of trendingPeople" class="col-md-2 ">
-<div  class="item">
-  <a  [routerLink]="['/moviedetails',item.id,item.media_type]">
+<div  class="item position-relative">
+  <a  [routerLink]="['/people',item.id,item.media_type]">
     <img *ngIf="item.poster_path" class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
     <img class="w-100"  *ngIf="item.profile_path" [src]="'https://image.tmdb.org/t/p/w500'+item.profile_path" alt="">
 

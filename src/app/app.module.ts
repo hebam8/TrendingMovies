@@ -32,6 +32,7 @@ import { TvComponent } from './tv/tv.component';
     RegisterComponent,
     SearchbynamePipe,
           TvComponent,
+          
           // PeopleComponent
 
           // MovComponent,

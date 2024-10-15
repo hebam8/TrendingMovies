@@ -21,7 +21,7 @@ const routes: Routes = [
 
   // {path:'moviedetails/:id/:media_type',canActivate:[AuthGuard] , component:MovComponent},
   {path:'tv', canActivate:[AuthGuard] ,component:TvComponent},
-  // {path:'people/:id/:media_type', canActivate:[AuthGuard] , component:PeopleComponent},
+  {path:'people/:id/:media_type', canActivate:[AuthGuard] , component:TvComponent},
   {path:'footer',canActivate:[AuthGuard] ,  component:FooterComponent},
   {path:'navbar', canActivate:[AuthGuard] , component:NavbarComponent},
   {path:'login', component:LoginComponent},
