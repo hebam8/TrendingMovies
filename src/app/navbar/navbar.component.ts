@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { CartService } from '../carts.service';
+
 
 
 @Component({
@@ -8,24 +10,37 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
- isLogin:boolean=false;
-  constructor( private _authService:AuthService) { }
+isLogin:boolean=false;
+cartNumber:number=0;
+  constructor(private _AuthService:AuthService, private _CartService:CartService) {
+    this._CartService.numberOfCartItem.subscribe({
+      next:(value)=>this.cartNumber=value
+    })
 
+    this._AuthService.userData.subscribe({
+      next:()=>{
+        if (this._AuthService.userData.getValue()  != null)
+      {
+        this.isLogin=true;
+      }else{
+        this.isLogin=false;
+      }
+
+
+      }
+          })
+
+
+
+
+
+
+  }
+
+   logOut(){
+    this._AuthService.logOut();
+   }
   ngOnInit(): void {
- this._authService.userData.subscribe({
-  next:()=> {
-    if (this._authService.userData.getValue() != null ) {
-      this.isLogin = true
-    }
-    else {
-      this.isLogin=false
-    }
-  }}
- )
-  }
 
-  logOut(){
-    this._authService.signOut();
-  }
 
-}
+}}

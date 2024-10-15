@@ -7,19 +7,20 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { MoviesComponent } from './movies/movies.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { PeopleComponent } from './people/people.component';
 import { RegisterComponent } from './register/register.component';
-import { TvComponent } from './tv/tv.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { MediaItemComponent } from './media-item/media-item.component';
-import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
-import { SearchPipe } from './search.pipe'
 import { ApikeyInterceptor } from './apikey.interceptor';
 import { SearchbynamePipe } from './searchbyname.pipe';
+import { CartComponent } from './cart/cart.component';
+import {  BrandsComponent } from './brand/brand.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesdetailsComponent } from './categoriesdetails/categoriesdetails.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ProductsComponent } from './prouduct/prouduct.component';
+import { ProductdetailsComponent } from './prouductdetailes/prouductdetailes.component';
 
 @NgModule({
   declarations: [
@@ -28,16 +29,22 @@ import { SearchbynamePipe } from './searchbyname.pipe';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    MoviesComponent,
+
     NavbarComponent,
     NotfoundComponent,
-    PeopleComponent,
+
     RegisterComponent,
-    TvComponent,
-    MediaItemComponent,
-    MoviedetailsComponent,
-    SearchPipe,
-    SearchbynamePipe
+
+
+
+    SearchbynamePipe,
+    CartComponent,
+    BrandsComponent,
+    CategoriesComponent,
+    CategoriesdetailsComponent,
+    CheckoutComponent,
+    ProductsComponent,
+    ProductdetailsComponent
   ],
   imports: [
     BrowserModule,
